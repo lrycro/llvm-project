@@ -242,6 +242,9 @@ public:
   /// SIMDs in full-SIMD mode, half of them otherwise.
   unsigned getNumWorkGroupSIMDs() const { return NumWorkGroupSIMDs; }
 
+  /// \returns Whether a work-group runs on all of the block's SIMDs.
+  bool isFullSIMDMode() const { return NumWorkGroupSIMDs == 4; }
+
   Align getAlignmentForImplicitArgPtr() const {
     return isAmdHsaOS() ? Align(8) : Align(4);
   }
